@@ -1,0 +1,6 @@
+name: HH-Core
+main: net.testusuke.hh.core.Main
+version: 1.0
+author: testusuke
+commands:
+  core:

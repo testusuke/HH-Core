@@ -1,0 +1,17 @@
+mode:
+data:
+  ender_pearl:
+    # エンダーパール機能の有効or無効
+    mode: true
+    # 体力の何%のダメージを与えるか(default:50)
+    power: 50
+  record:
+    # レコード効果の有効or無効
+    mode: true
+    # クールタイム(秒)
+    cooltime: 60
+  totem:
+    # トーテム機能の有効or無効
+    mode: true
+    # 爆発の威力(TNTは4.0)
+    power: 6.0
