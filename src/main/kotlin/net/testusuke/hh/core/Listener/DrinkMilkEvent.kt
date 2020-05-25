@@ -15,6 +15,7 @@ object DrinkMilkEvent:Listener {
         val item = event.item
         if(item.type == Material.MILK_BUCKET){
             event.isCancelled = true
+            item.amount--
             val effect = PotionEffect(PotionEffectType.HUNGER,30 * 20,3)
             player.addPotionEffect(effect)
         }

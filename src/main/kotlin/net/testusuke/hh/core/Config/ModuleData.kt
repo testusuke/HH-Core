@@ -12,6 +12,9 @@ class ModuleData(private val plugin: Main) {
     var recordCoolTime:Int = 60
     //  Totem
     var totemMode = true
+    //  BonusChest
+    var bonusChestMode = true
+    var bonusChestWorld = "world"
 
     fun loadData(){
 
@@ -27,5 +30,9 @@ class ModuleData(private val plugin: Main) {
         //  Totem
         val totem = "data.totem"
         totemMode = config.getBoolean("${totem}.mode")
+        //  BonusChest
+        val bonusChest = "data.bonuschest"
+        bonusChestMode = config.getBoolean("${bonusChest}.mode")
+        bonusChestWorld = config.getString("${bonusChest}.world") ?: "world"
     }
 }

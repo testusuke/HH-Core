@@ -1,9 +1,9 @@
 package net.testusuke.hh.core
 
+import net.testusuke.hh.core.BonusChest.BonusChestMain
 import net.testusuke.hh.core.Command.CoreCommand
 import net.testusuke.hh.core.Config.ModuleData
 import net.testusuke.hh.core.Listener.*
-import org.bukkit.Material
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main:JavaPlugin() {
@@ -19,6 +19,11 @@ class Main:JavaPlugin() {
         lateinit var moduleData: ModuleData
 
     }
+
+    //  Class
+    var bonusChest:BonusChestMain? = null
+
+
     override fun onEnable() {
         plugin = this
         //  Config
@@ -34,8 +39,11 @@ class Main:JavaPlugin() {
         pm.registerEvents(WitherEffectEvent,this)
         pm.registerEvents(ActivateTotem,this)
         //  Load class
+        //  config
         moduleData = ModuleData(this)
         moduleData.loadData()
+        //  BonusChest
+        bonusChest = BonusChestMain(this)
 
     }
 

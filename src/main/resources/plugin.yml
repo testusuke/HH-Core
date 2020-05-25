@@ -1,6 +1,15 @@
 name: HH-Core
 main: net.testusuke.hh.core.Main
 version: 1.0
+api-version: 1.15
 author: testusuke
 commands:
   core:
+    permission: "core.general"
+    description: main command
+  core bonuschest:
+    permission: "core.admin"
+    description: BonusChest main command
+  core ban:
+    permission: "core.admin"
+    description: BanSystem main command
