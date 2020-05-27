@@ -49,6 +49,9 @@ class Main:JavaPlugin() {
 
     override fun onDisable() {
         saveMode()
+        //  Class
+        bonusChest?.onDisable()
+        
     }
 
     fun loadMode(){

@@ -2,11 +2,11 @@ package net.testusuke.hh.core.Listener
 
 import net.testusuke.hh.core.Main.Companion.mode
 import net.testusuke.hh.core.Main.Companion.moduleData
-import org.bukkit.Location
 import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerTeleportEvent
+
 
 object EnderPearlUseEvent:Listener {
 
@@ -23,5 +23,7 @@ object EnderPearlUseEvent:Listener {
         val sound = Sound.ENTITY_SHULKER_HURT
         player.playSound(player.location,sound,1F,2F)
     }
+
+
 
 }

@@ -6,9 +6,12 @@ import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 import java.io.IOException
 
-class BonusChestData(main:Main) {
+class BonusChestData(private val main:Main) {
     private lateinit var file:File
     private var config = YamlConfiguration()
+
+    //  変数
+    var base64 = ""
 
     init {
 
@@ -26,10 +29,10 @@ class BonusChestData(main:Main) {
         }catch (e:IOException){
             e.printStackTrace()
         }
-
+        loadData()
     }
 
-    fun saveConfig(){
+    private fun saveConfig(){
         try {
             config.save(file)
         }catch (e: IOException){
@@ -37,7 +40,20 @@ class BonusChestData(main:Main) {
         }
     }
 
-    fun getConfig():YamlConfiguration{
+    private fun getConfig():YamlConfiguration{
         return config
     }
+
+    fun loadData(){
+        main.logger.info("BonusChestのアイテムリストを読み込みます。")
+        base64 = config.getString("item").toString()
+        main.logger.info("BonusChest.item: $base64")
+    }
+
+    fun saveData(){
+        config.set("item",base64)
+        saveConfig()
+        main.logger.info("Save Bonus Item List. Base64: $base64")
+    }
+
 }

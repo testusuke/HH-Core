@@ -15,6 +15,7 @@ class ModuleData(private val plugin: Main) {
     //  BonusChest
     var bonusChestMode = true
     var bonusChestWorld = "world"
+    var bonusChestValue = 5
 
     fun loadData(){
 
@@ -34,5 +35,6 @@ class ModuleData(private val plugin: Main) {
         val bonusChest = "data.bonuschest"
         bonusChestMode = config.getBoolean("${bonusChest}.mode")
         bonusChestWorld = config.getString("${bonusChest}.world") ?: "world"
+        bonusChestValue = config.getInt("${bonusChest}.value")
     }
 }

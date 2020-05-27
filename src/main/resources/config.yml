@@ -19,3 +19,5 @@ data:
     mode: true
     # worldの名前
     world: "world"
+    # value
+    value: 5
