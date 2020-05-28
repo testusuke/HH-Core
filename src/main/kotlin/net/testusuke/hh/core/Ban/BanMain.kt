@@ -10,6 +10,8 @@ import org.bukkit.event.player.PlayerJoinEvent
 class BanMain(main: Main) {
 
     var banData:BanData? = null
+    // mode
+    var mode = true
 
     init {
 
@@ -21,6 +23,7 @@ class BanMain(main: Main) {
         pm.registerEvents(PlayerLoginEvent,main)
         //  Command
         main.getCommand("core ban")?.setExecutor(BanCommand)
-
+        //  loadMode
+        loadMode()
     }
 }

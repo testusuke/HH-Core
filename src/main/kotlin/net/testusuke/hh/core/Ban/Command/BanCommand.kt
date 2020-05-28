@@ -1,7 +1,9 @@
 package net.testusuke.hh.core.Ban.Command
 
+import net.testusuke.hh.core.Main.Companion.plugin
 import net.testusuke.hh.core.Main.Companion.prefix
 import net.testusuke.hh.core.Permission
+import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -27,10 +29,32 @@ object BanCommand:CommandExecutor {
                     sendHelp(sender)
                     return false
                 }
+                val name = args[1]
+                val offlinePlayer = Bukkit.getOfflinePlayer(name)
+                val uuid = offlinePlayer.uniqueId.toString()
+                //  SendMessage
+                sender.sendMessage("${prefix}§6${name}§aの情報を問い合わせています... §6uuid: $uuid")
+                // isExists
+                if(!plugin.banMain.banData.isBanned(uuid)){
+                    sender.sendMessage("${prefix}§6${name}の情報が存在しません。")
+                }
 
             }
             "reload" -> reloadBanData(sender)
         }
         return false
     }
+
+    private fun sendHelp(player: Player){
+
+    }
+
+    private fun changeMode(player: Player,boolean: Boolean){
+        if(plugin.banMain.mode  == boolean){
+            player.sendMessage("${prefix}§cすでに${boolean}になっています。")
+        }
+        plugin.banMain.mode = boolean
+        player.sendMessage("${prefix}§aBan機能を${boolean}に変更しました。")
+    }
+
 }

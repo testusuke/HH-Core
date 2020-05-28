@@ -21,3 +21,9 @@ data:
     world: "world"
     # value
     value: 5
+database:
+  host: "localhost"
+  user: "root"
+  pass: "password"
+  port: "3306"
+  db: "db"
