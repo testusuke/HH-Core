@@ -4,16 +4,18 @@ import net.testusuke.hh.core.Ban.Command.BanCommand
 import net.testusuke.hh.core.Ban.DataBase.BanData
 import net.testusuke.hh.core.Ban.Listener.PlayerDieEvent
 import net.testusuke.hh.core.Ban.Listener.PlayerLoginEvent
+import net.testusuke.hh.core.Config.Data.BanConfig
 import net.testusuke.hh.core.Main
 import org.bukkit.event.player.PlayerJoinEvent
 
 class BanMain(main: Main) {
 
     var banData:BanData? = null
+    var banConfig:BanConfig? = null
     // mode
     var mode = true
 
-    init {
+    init{
 
         //  class
         banData = BanData(main)
@@ -24,6 +26,12 @@ class BanMain(main: Main) {
         //  Command
         main.getCommand("core ban")?.setExecutor(BanCommand)
         //  loadMode
-        loadMode()
+        banConfig = BanConfig(main,this)
+        banConfig?.loadMode()
+    }
+
+    fun onDisable(){
+        banConfig?.saveMode()
+
     }
 }

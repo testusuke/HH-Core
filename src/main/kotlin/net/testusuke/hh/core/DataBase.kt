@@ -1,8 +1,7 @@
 package net.testusuke.hh.core
 
-import net.md_5.bungee.api.ChatColor
-import net.md_5.bungee.api.chat.TextComponent
 import net.testusuke.hh.core.Main.Companion.plugin
+import org.bukkit.ChatColor
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -50,7 +49,7 @@ class DataBase(private val prefix: String) {
         }
     }
 
-    private fun getConnection(): Connection? {
+    fun getConnection(): Connection? {
         val connection: Connection
         connection = try {
             DriverManager.getConnection("jdbc:mariadb://$host:$port/$db", user, pass)
@@ -72,13 +71,9 @@ class DataBase(private val prefix: String) {
     }
 
     private fun sendErrorMessage() {
-        plugin.logger.warning(ChatColor.RED.toString() + "接続エラーです。MariaDBがダウンしている、もしくはコネクションの設定を確認してください。")
+        plugin.logger.warning("接続エラーです。MariaDBがダウンしている、もしくはコネクションの設定を確認してください。")
         if (errorMode) return
         plugin.server.broadcastMessage("${prefix}§c§lデータベースの接続エラーです。運営にお知らせください。")
         errorMode = true
-    }
-
-    private fun createTable() {
-
     }
 }
