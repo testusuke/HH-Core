@@ -11,7 +11,7 @@ object PlayerDieEvent:Listener {
     fun onPlayerDie(e:PlayerDeathEvent){
         val player = e.entity
         if(!mode)return
-        if(!)
+
     }
 
 }

@@ -1,8 +1,10 @@
 package net.testusuke.hh.core.Ban.DataBase
 
 import net.testusuke.hh.core.Main
+import org.bukkit.entity.Player
 import java.sql.SQLException
 import java.sql.Statement
+import java.util.*
 import kotlin.collections.ArrayList
 
 class BanData(private val main: Main) {
@@ -15,7 +17,7 @@ class BanData(private val main: Main) {
 
     //  Create Table
     //  sql
-    val createTableSql = "create table banlist\n" +
+    private val createTableSql = "create table banlist\n" +
             "(\n" +
             "\tname varchar null,\n" +
             "\tuuid varchar not null,\n" +
@@ -23,7 +25,7 @@ class BanData(private val main: Main) {
             "\tdate datetime not null\n" +
             ");"
     private fun createTable(){
-        var connection = main.dataBase.getConnection()
+        val connection = main.dataBase.getConnection()
         if(connection == null){
             main.logger.info("コネクションが不正です。")
             return
@@ -37,6 +39,14 @@ class BanData(private val main: Main) {
             main.logger.info("sql: $createTableSql")
         }
         connection.close()
+    }
+
+
+    /**
+     * 書き換えてね
+     */
+    fun isBanned(uuid: String):Boolean{
+        return false
     }
 
 }

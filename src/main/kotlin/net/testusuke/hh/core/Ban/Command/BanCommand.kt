@@ -35,7 +35,7 @@ object BanCommand:CommandExecutor {
                 //  SendMessage
                 sender.sendMessage("${prefix}§6${name}§aの情報を問い合わせています... §6uuid: $uuid")
                 // isExists
-                if(!plugin.banMain.banData.isBanned(uuid)){
+                if(!plugin.banMain.banData!!.isBanned(uuid)){
                     sender.sendMessage("${prefix}§6${name}の情報が存在しません。")
                 }
 
@@ -57,4 +57,10 @@ object BanCommand:CommandExecutor {
         player.sendMessage("${prefix}§aBan機能を${boolean}に変更しました。")
     }
 
+    /**
+     * 書き換えてね
+     */
+    fun reloadBanData(player: Player){
+
+    }
 }

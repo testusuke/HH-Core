@@ -30,9 +30,12 @@ object LoadNewChunk: Listener {
         if(!value())return
         //  CreateChest
         createChest(location)
+        plugin.logger.info("location: ${location.toString()}")
+        plugin.logger.info("complete")
     }
 
     private fun createChest(location:Location) {
+        location.block.type = Material.CHEST
     }
 
     private fun value():Boolean{
