@@ -23,18 +23,18 @@ object RecordEvent:Listener {
             val material = item.type
             if (!material.isRecord) return
             when(material){
-                Material.MUSIC_DISC_11 -> Record11.run(player)
-                Material.MUSIC_DISC_13 -> Record13.run(player)
-                Material.MUSIC_DISC_BLOCKS -> RecordBlocks.run(player)
-                Material.MUSIC_DISC_CAT -> RecordCat.run(player)
-                Material.MUSIC_DISC_CHIRP -> RecordChirp.run(player)
-                Material.MUSIC_DISC_FAR -> RecordFar.run(player)
-                Material.MUSIC_DISC_MALL -> RecordMall.run(player)
-                Material.MUSIC_DISC_MELLOHI -> RecordMellohi.run(player)
-                Material.MUSIC_DISC_STAL -> RecordStal.run(player)
-                Material.MUSIC_DISC_STRAD -> RecordStrad.run(player)
-                Material.MUSIC_DISC_WAIT -> RecordWait.run(player)
-                Material.MUSIC_DISC_WARD -> RecordWard.run(player)
+                Material.MUSIC_DISC_11 -> RecordAction.Record11.run(player)
+                Material.MUSIC_DISC_13 -> RecordAction.Record13.run(player)
+                Material.MUSIC_DISC_BLOCKS -> RecordAction.RecordBlocks.run(player)
+                Material.MUSIC_DISC_CAT -> RecordAction.RecordCat.run(player)
+                Material.MUSIC_DISC_CHIRP -> RecordAction.RecordChirp.run(player)
+                Material.MUSIC_DISC_FAR -> RecordAction.RecordFar.run(player)
+                Material.MUSIC_DISC_MALL -> RecordAction.RecordMall.run(player)
+                Material.MUSIC_DISC_MELLOHI -> RecordAction.RecordMellohi.run(player)
+                Material.MUSIC_DISC_STAL -> RecordAction.RecordStal.run(player)
+                Material.MUSIC_DISC_STRAD -> RecordAction.RecordStrad.run(player)
+                Material.MUSIC_DISC_WAIT -> RecordAction.RecordWait.run(player)
+                Material.MUSIC_DISC_WARD -> RecordAction.RecordWard.run(player)
                 else -> return
             }
             item.amount--
