@@ -41,7 +41,7 @@ class DataBase(private val prefix: String) {
 
     private fun loadClass() {
         try {
-            Class.forName("org.mariadb.jdbc.Driver")
+            Class.forName("com.mysql.jdbc.Driver")
             plugin.logger.info("Load class.")
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
@@ -52,7 +52,7 @@ class DataBase(private val prefix: String) {
     fun getConnection(): Connection? {
         val connection: Connection
         connection = try {
-            DriverManager.getConnection("jdbc:mariadb://$host:$port/$db", user, pass)
+            DriverManager.getConnection("jdbc:mysql://$host:$port/$db", user, pass)
         } catch (e: SQLException) {
             e.printStackTrace()
             return null

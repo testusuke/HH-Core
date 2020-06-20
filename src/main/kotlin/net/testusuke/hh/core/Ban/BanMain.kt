@@ -1,16 +1,15 @@
 package net.testusuke.hh.core.Ban
 
 import net.testusuke.hh.core.Ban.Command.BanCommand
-import net.testusuke.hh.core.Ban.DataBase.BanData
+import net.testusuke.hh.core.Ban.DataBase.BanDataBase
 import net.testusuke.hh.core.Ban.Listener.PlayerDieEvent
 import net.testusuke.hh.core.Ban.Listener.PlayerLoginEvent
 import net.testusuke.hh.core.Config.Data.BanConfig
 import net.testusuke.hh.core.Main
-import org.bukkit.event.player.PlayerJoinEvent
 
 class BanMain(main: Main) {
 
-    var banData:BanData? = null
+    var banData:BanDataBase? = null
     var banConfig:BanConfig? = null
     // mode
     var mode = true
@@ -18,7 +17,7 @@ class BanMain(main: Main) {
     init{
 
         //  class
-        banData = BanData(main)
+        banData = BanDataBase(main)
         //  Event
         val pm = main.server.pluginManager
         pm.registerEvents(PlayerDieEvent,main)

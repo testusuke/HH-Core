@@ -23,6 +23,19 @@ object BanCommand:CommandExecutor {
             "help" -> sendHelp(sender)
             "on" -> changeMode(sender,true)
             "off" -> changeMode(sender,false)
+            "ban" -> {
+                if(args.size != 2){
+                    sender.sendMessage("${prefix}§c使い方が不正です。")
+                    sendHelp(sender)
+                    return false
+                }
+                val name = args[1]
+                val offlinePlayer = Bukkit.getOfflinePlayer(name)
+                val uuid = offlinePlayer.uniqueId.toString()
+                //  SendMessage
+                sender.sendMessage("${prefix}§6${name}§aの情報を問い合わせています... §6uuid: $uuid")
+
+            }
             "unban" -> {
                 if(args.size != 2){
                     sender.sendMessage("${prefix}§c使い方が不正です。")
@@ -34,13 +47,8 @@ object BanCommand:CommandExecutor {
                 val uuid = offlinePlayer.uniqueId.toString()
                 //  SendMessage
                 sender.sendMessage("${prefix}§6${name}§aの情報を問い合わせています... §6uuid: $uuid")
-                // isExists
-                if(!plugin.banMain.banData!!.isBanned(uuid)){
-                    sender.sendMessage("${prefix}§6${name}の情報が存在しません。")
-                }
 
             }
-            "reload" -> reloadBanData(sender)
         }
         return false
     }
@@ -57,10 +65,4 @@ object BanCommand:CommandExecutor {
         player.sendMessage("${prefix}§aBan機能を${boolean}に変更しました。")
     }
 
-    /**
-     * 書き換えてね
-     */
-    fun reloadBanData(player: Player){
-
-    }
 }
