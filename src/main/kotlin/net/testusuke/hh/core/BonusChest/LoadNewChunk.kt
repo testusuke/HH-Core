@@ -25,17 +25,18 @@ object LoadNewChunk: Listener {
         if(world.name != moduleData.bonusChestWorld)return
         val x = chunk.x
         val z = chunk.z
-        val location = Location(world,x.toDouble(),world.getHighestBlockYAt(x,z).toDouble(),z.toDouble())
+        val location = Location(world,x.toDouble(),world.getHighestBlockYAt(x,z).toDouble() + 1,z.toDouble())
         //  確率
         if(!value())return
         //  CreateChest
         createChest(location)
-        plugin.logger.info("location: ${location.toString()}")
-        plugin.logger.info("complete")
     }
 
     private fun createChest(location:Location) {
         location.block.type = Material.CHEST
+        val chest = location.block.blockData as Chest
+        val inv = chest.inventory
+
     }
 
     private fun value():Boolean{
