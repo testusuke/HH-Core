@@ -1,9 +1,9 @@
 package net.testusuke.hh.core
 
 import net.testusuke.hh.core.Main.Companion.plugin
-import org.bukkit.ChatColor
 import java.sql.Connection
 import java.sql.DriverManager
+import java.sql.PreparedStatement
 import java.sql.SQLException
 
 class DataBase(private val prefix: String) {
@@ -69,7 +69,6 @@ class DataBase(private val prefix: String) {
         plugin.logger.info("接続に成功しました！")
         return true
     }
-
     private fun sendErrorMessage() {
         plugin.logger.warning("接続エラーです。MariaDBがダウンしている、もしくはコネクションの設定を確認してください。")
         if (errorMode) return

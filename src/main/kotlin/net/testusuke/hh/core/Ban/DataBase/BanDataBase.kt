@@ -10,6 +10,8 @@ import kotlin.collections.ArrayList
 
 class BanDataBase(private val main: Main) {
 
+    var uuidBanMap:MutableMap<String,BanData> = mutableMapOf()
+
     init {
         createTable()
 
@@ -23,6 +25,7 @@ class BanDataBase(private val main: Main) {
             "\tuuid varchar not null,\n" +
             "\taddress varchar not null,\n" +
             "\tdate datetime not null\n" +
+            "\tstatus boolean not null\n"+
             ");"
 
     private fun createTable(){
@@ -47,16 +50,20 @@ class BanDataBase(private val main: Main) {
     }
 
     fun isBanned(uuid: String):Boolean {
+
+        return false
+    }
+
+    fun loadPlayerData(uuid:String):BanData?{
         val sql = "SELECT * FROM ban_list WHERE uuid='${uuid}';"
-        val connection = main.dataBase.getConnection() ?: return false
+        val connection = main.dataBase.getConnection() ?: return null
         val statement:Statement = connection.createStatement()
         val resultSet = statement.executeQuery(sql)
-        if(!resultSet.next()) return false
+        if(!resultSet.next()) return null
         when(resultSet.next()){
 
         }
-
-        return false
+        return null
     }
 
 }

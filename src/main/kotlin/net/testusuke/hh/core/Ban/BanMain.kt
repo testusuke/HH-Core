@@ -9,13 +9,16 @@ import net.testusuke.hh.core.Main
 
 class BanMain(main: Main) {
 
+    companion object{
+        lateinit var banMain:BanMain
+    }
     var banData:BanDataBase? = null
     var banConfig:BanConfig? = null
     // mode
     var mode = true
 
     init{
-
+        banMain = this
         //  class
         banData = BanDataBase(main)
         //  Event

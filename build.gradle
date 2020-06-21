@@ -23,6 +23,7 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation("com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT")
+    compile "com.maxmind.geoip2:geoip2:2.14.0"
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 
